@@ -9,13 +9,13 @@ $age = 10;
 $res = 0;
 
 
-if (6 <=$age || $age <= 7 ){
+if (6 <= $age && $age <= 7 ){
     echo "l'enfant que a $age ans appartient à la catégorie << Poussin >>";
 }
-elseif (8 <= $age || $age <=9 ){
+elseif (8 <= $age && $age <=9 ){
     echo "l'enfant que a $age ans appartient à la catégorie << Pulille >>";
 }
-elseif (10 <= $age || $age <= 11){
+elseif (10 <= $age && $age <= 11){
     echo "l'enfant que a $age ans appartient à la catégorie << Minime >>";
 }
 elseif ( $age >= 12){
