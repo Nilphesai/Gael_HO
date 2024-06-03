@@ -14,6 +14,8 @@ $langue = Array(
     "Marie-Claire" => "ENG",
 );
 
+ksort($langue); /* tri par ordre croissant de prénom */
+
 $clé = key($langue);
 
 for ($i = 1; $i <= count($langue);$i++){
