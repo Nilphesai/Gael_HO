@@ -10,7 +10,7 @@ précisant le nom des champs associés.</p>
 
 $nomsInput = array("Nom","Prénom","Ville");
 
-//afficher le résultat de la fonction cafficherTablesHTML
+//afficher le résultat de la fonction afficherInput
 echo afficherInput($nomsInput);
 
 
