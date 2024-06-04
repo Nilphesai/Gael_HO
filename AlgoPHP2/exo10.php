@@ -16,13 +16,7 @@ $nomsInput = array("Nom","Prénom","Ville", "adresse mail");
 $nomsRadio = array("Masculin","Féminin","Autre");
 $elements = array("Développeur Logiciel","Designer web","Intégrateur","Chef de projet");
 
-//afficher le résultat de la fonction afficherInput
-echo afficherInput($nomsInput);
-//afficher le résultat de la fonction alimenterListeDeroulante
-echo AfficherRadio($nomsRadio);
-//afficher le résultat de la fonction alimenterListeDeroulante
-echo alimenterListeDeroulante($elements);
-
+echo afficherFormulaire($nomsInput,$nomsRadio,$elements);
 echo "</br><button class='favorite styled' type='button'>Submit</button>";
 
 function afficherInput($nomsInput) {
@@ -35,7 +29,7 @@ function afficherInput($nomsInput) {
     return $result;
 }
 
-function AfficherRadio($nomsRadio) {
+function afficherRadio($nomsRadio) {
     foreach ($nomsRadio as $nomsRadio){//le "name" est là pour liée les radiobutton entre eux
         $result .= "<input type='radio' id='$nomsRadio' name='genre'/>
         <label for='$nomsRadio'>$nomsRadio</label></br>";
@@ -46,8 +40,15 @@ function AfficherRadio($nomsRadio) {
 function alimenterListeDeroulante($elements) {
     $result .= "<select>";
     foreach ($elements as $elements){
-        $result = "$result<option>$elements</option>";
+        $result = "$result<optionvalue='$elements' name='$elements'>$elements</option>";
     }
     $result .= "</select>";
+    return $result;
+}
+
+function afficherFormulaire($nomsInput,$nomsRadio,$elements){
+    $result .= afficherInput($nomsInput);
+    $result .= afficherRadio($nomsRadio);
+    $result .= alimenterListeDeroulante($elements);
     return $result;
 }

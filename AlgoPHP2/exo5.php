@@ -17,8 +17,8 @@ echo afficherInput($nomsInput);
 function afficherInput($nomsInput) {
 
     foreach ($nomsInput as $nomsInput){
-        $result = "$result"."$nomsInput </br>
-                    <input type='text'"."></br>";
+        $result .= "<label for=$nomsImput>$nomsInput</label></br>
+                    <input type='text' id=$nomsImput"."></br>";
     }
 
     return $result;
