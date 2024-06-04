@@ -23,7 +23,7 @@ function genererCheckbox($elements) {
         else{
             $check = "unchecked";
         }
-        $result .= "<input type='checkbox' id=$choix $check >
+        $result .= "<input type='checkbox' id=$choix $check />
         <label for=$choix>$choix</label><br>";
     }
     return $result;
