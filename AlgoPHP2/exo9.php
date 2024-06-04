@@ -1,4 +1,4 @@
-<h1>Exercice 6</h1>
+<h1>Exercice 9</h1>
 
 <p>Créer une fonction personnalisée permettant d’afficher des boutons radio avec un tableau de
 valeurs en paramètre ("Monsieur","Madame","Mademoiselle").</p>
