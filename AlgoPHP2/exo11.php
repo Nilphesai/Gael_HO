@@ -24,3 +24,17 @@ function formaterDateFr($date) {
 
     return $result;
 }
+
+//version 2
+
+$fmt = new IntlDateFormatter(//classe d'affichage de d'ate et heure
+	'fr_FR',//local
+	IntlDateFormatter::FULL,//type de date
+	IntlDateFormatter::NONE,//type d'heure
+    NULL,//fuseau horaires (optionnel)
+    IntlDateFormatter::GREGORIAN,//calendrier utilisé (optionnel)
+
+);
+
+$date = new DateTime('2018-02-23');
+echo '</br>'.$fmt->format($date);
