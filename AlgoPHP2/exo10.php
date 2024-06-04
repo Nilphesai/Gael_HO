@@ -40,7 +40,7 @@ function afficherRadio($nomsRadio) {
 function alimenterListeDeroulante($elements) {
     $result .= "<select>";
     foreach ($elements as $elements){
-        $result = "$result<optionvalue='$elements' name='$elements'>$elements</option>";
+        $result .= "<option value='$elements' name='$elements'>$elements</option>";
     }
     $result .= "</select>";
     return $result;
