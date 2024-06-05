@@ -19,12 +19,12 @@ tests pour vérifier la cohérence de la classe Voiture. </p>
 class Voiture
 {
     // déclaration d'une propriété
-    public $_marque = "";
-    public $_modèle = "";
-    public $_nbPortes = 0;
-    public $_vitesseActuelle = 0;
+    private string $_marque = "";
+    private string $_modèle = "";
+    private int $_nbPortes = 0;
+    private int $_vitesseActuelle = 0;
 
-    public $_onOff = "à l'arrêt";
+    private string $_onOff = "à l'arrêt";
 
     //accesseurs
     public function get_marque(): string{
@@ -58,34 +58,39 @@ class Voiture
     }
 
     //constructeur
-    public function __construct($marque,$modèle,$nbPortes){
+    public function __construct(string $marque,string $modèle,int $nbPortes){
         $this->_marque = $marque;
         $this->_modèle = $modèle;
         $this->_nbPortes = $nbPortes;
+    }
+
+    public function __toString(): string{
+        $result = $this->_marque." ".$this->_modèle;
+        return $result;
     }
 
     // déclaration des méthodes
     public function demarrer(): string {
         
         if ($this->$_onOff == "démarré"){
-            $result = " le véhicule $this->_marque $this->modèle à déja démarré</br>";
+            $result = " le véhicule $this à déja démarré</br>";
         }
         else {
             $this->_onOff = "démarré";
-            $result = "le véhicule $this->_marque $this->modèle démarre</br>";
+            $result = "le véhicule $this démarre</br>";
         }
         
         return $result;
     }
 
-    public function accelerer($vitesse): string {
+    public function accelerer(int $vitesse): string {
         if ($this->_onOff == "démarré"){
             $this->_vitesseActuelle += $vitesse;
-            $result = "Le véhicule $this->_marque $this->modèle accélère de $vitesse km / h</br>";
+            $result = "Le véhicule $this accélère de $vitesse km / h</br>";
         }
         else {
-            $result = "le véhicule $this->_marque $this->modèle veux accélerer de $vitesse km / h</br>";
-            $result .= "Pour accélerer, il faut démarrer le Véhicule $this->_marque $this->modèle !</br>";
+            $result = "le véhicule $this veux accélerer de $vitesse km / h</br>";
+            $result .= "Pour accélerer, il faut démarrer le Véhicule $this !</br>";
         }
         return $result;
     }
@@ -93,22 +98,22 @@ class Voiture
     public function stopper(): string {
         if ($this->_onOff == "démarré"){
             $this->_onOff = "à l'arrêt";
-            $result = " le véhicule $this->_marque $this->modèle est stoppé</br>";
+            $result = " le véhicule $this est stoppé</br>";
         }
         else {
-            $result = "le véhicule $this->_marque $this->modèle est déjà à l'arrêt</br>";
+            $result = "le véhicule $this est déjà à l'arrêt</br>";
         }
         return $result;
     }
 
-    public function ralentir($vitesse){
+    public function ralentir(int $vitesse): string{
         if ($this->_onOff == "démarré" and $this->_vitesseActuelle >= 0){
             $this->_vitesseActuelle -= $vitesse;
-            $result = "Le véhicule $this->_marque $this->modèle ralentit de $vitesse km / h</br>";
+            $result = "Le véhicule $this ralentit de $vitesse km / h</br>";
         }
         else {
-            $result = "le véhicule $this->_marque $this->modèle veux ralentir de $vitesse km / h</br>";
-            $result .= "Pour ralentir, il faut démarrer le Véhicule $this->_marque $this->modèle !</br>";
+            $result = "le véhicule $this veux ralentir de $vitesse km / h</br>";
+            $result .= "Pour ralentir, il faut démarrer le Véhicule $this !</br>";
         }
         return $result;
     }
@@ -118,7 +123,7 @@ class Voiture
         
         $result = "Info véhicule </br>
         ********************</br>
-        Nom et modèle du véhicule :$this->_marque $this->_modèle </br>
+        Nom et modèle du véhicule :$this </br>
         Nombre de portes :$this->_nbPortes</br>
         Le véhicule $this->_marque est $this->_onOff </br>
         Sa vitesse actuelle est de : $this->_vitesseActuelle km / h</br>";

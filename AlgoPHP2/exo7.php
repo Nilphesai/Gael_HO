@@ -9,9 +9,9 @@ dans le tableau associatif si la case est cochée ou non.</p>
 
 
 $elements = array(
-    "Choix 1" => "unchecked",
+    "Choix 1" => "",
     "Choix 2" => "checked",
-    "Choix 3" => "unchecked");
+    "Choix 3" => "");
 //afficher le résultat de la fonction 
 echo genererCheckbox($elements);
 

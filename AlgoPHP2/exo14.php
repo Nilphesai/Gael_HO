@@ -19,8 +19,8 @@ echo $ve1->getInfos(); </p>
 class Voiture
 {
     // déclaration d'une propriété
-    public $_marque = "";
-    public $_modèle = "";
+    private string $_marque = "";
+    private string $_modèle = "";
 
 
     public function get_marque(): string{
@@ -40,22 +40,27 @@ class Voiture
     }
 
 
-    public function __construct($marque,$modèle){
+    public function __construct(string $marque,string $modèle){
         $this->_marque = $marque;
         $this->_modèle = $modèle;
+    }
+
+    public function __toString(){
+        $result = $this->_marque." ".$this->_modèle;
+        return $result;
     }
 
 
     public function getInfos(): string{
         $result = "Info véhicule </br>
-        Nom et modèle du véhicule :$this->_marque $this->_modèle </br>";
+        Nom et modèle du véhicule :$this </br>";
         return $result;
     }
 }
 
 //classe qui hérite
 Class VoitureElec extends Voiture{
-    public $_autonomie;
+    private int $_autonomie;
 
     public function get_autonomie(): string {
         return $this->_autonomie;
@@ -66,14 +71,14 @@ Class VoitureElec extends Voiture{
     }
 
 
-    public function __construct($marque, $modèle, $autonomie){
+    public function __construct(string $marque,string $modèle,int $autonomie){
         parent::__construct($marque, $modèle);//prends les paramètres du parent
         $this->_autonomie = $autonomie;
     }
 
     public function getInfos(): string{
         $result = "Info véhicule </br>
-        Nom et modèle du véhicule :$this->_marque $this->_modèle </br>
+        Nom et modèle du véhicule :$this </br>
         durée d'autonomie de $this->_autonomie heures </br>";
         return $result;
     }
