@@ -24,7 +24,7 @@ class Voiture
     public $_nbPortes = 0;
     public $_vitesseActuelle = 0;
 
-    public $_onOff = TRUE;
+    public $_onOff = "à l'arrêt";
 
     //accesseurs
     public function get_marque(): string{
@@ -65,48 +65,72 @@ class Voiture
     }
 
     // déclaration des méthodes
-    public function demarrer() {
-        if ($this->$_onOff == TRUE){
-            echo " le véhicule $this->$_marque $this->modèle à déja démarré</br>";
+    public function demarrer(): string {
+        
+        if ($this->$_onOff == "démarré"){
+            $result = " le véhicule $this->_marque $this->modèle à déja démarré</br>";
         }
         else {
-            $this->$_onOff = TRUE;
-            echo "le véhicule $this->$_marque $this->modèle démarre</br>";
-        }
-    }
-
-    public function accelerer($vitesse) {
-        if ($_vitesseActuelle <= 0){
-            $this->$_vitesseActuelle += $vitesse;
-
-        }
-        else {
-            echo "le véhicule $this->$_marque $this->modèle veux accélerer de $vitesse </br>";
-            echo "Pour accélerer, il faut démarrer le Véhicule $this->$_marque $this->modèle !</br>";
+            $this->_onOff = "démarré";
+            $result = "le véhicule $this->_marque $this->modèle démarre</br>";
         }
         
+        return $result;
     }
 
-    public function stopper() {
-        if ($this->$_onOff == TRUE){
-            $this->$_onOff = FALSE;
-            echo " le véhicule $this->$_marque $this->modèle est stoppé</br>";
+    public function accelerer($vitesse): string {
+        if ($this->_onOff == "démarré"){
+            $this->_vitesseActuelle += $vitesse;
+            $result = "Le véhicule $this->_marque $this->modèle accélère de $vitesse km / h</br>";
         }
         else {
-            echo "le véhicule $this->$_marque $this->modèle est déjà à l'arrêt</br>";
+            $result = "le véhicule $this->_marque $this->modèle veux accélerer de $vitesse </br>";
+            $result .= "Pour accélerer, il faut démarrer le Véhicule $this->_marque $this->modèle !</br>";
         }
+        return $result;
     }
 
+    public function stopper(): string {
+        if ($this->_onOff == "démarré"){
+            $this->_onOff = "à l'arrêt";
+            $result = " le véhicule $this->_marque $this->modèle est stoppé</br>";
+        }
+        else {
+            $result = "le véhicule $this->_marque $this->modèle est déjà à l'arrêt</br>";
+        }
+        return $result;
+    }
+
+    public function ralentir($vitesse){
+        if ($this->_onOff == "démarré" and $this->_vitesseActuelle >= 0){
+            $this->_vitesseActuelle -= $vitesse;
+            $result = "Le véhicule $this->_marque $this->modèle ralentit de $vitesse km / h</br>";
+        }
+        else {
+            $result = "le véhicule $this->_marque $this->modèle veux ralentir de $vitesse </br>";
+            $result .= "Pour accélerer, il faut démarrer le Véhicule $this->_marque $this->modèle !</br>";
+        }
+        return $result;
+    }
+    
+
     public function info(): string {
-        echo $this->_marque;
+        
         $result = "Info véhicule </br>********************</br>Nom et modèle du véhicule :$this->_marque $this->_modèle </br>Nombre de portes :$this->_nbPortes</br>Le véhicule $this->_marque est $this->_onOff </br>Sa vitesse actuelle est de : $this->_vitesseActuelle km / h</br>";
         return $result;
     }
 }
 
 $v1 = new Voiture("Peugeot","408",5);
-
-echo $v1->get_marque();
 $v2 = new Voiture("Citroën","C4",3);
-echo $v2->get_marque();
+
+echo $v1->demarrer();
+echo $v1->accelerer(50);
+echo $v2->demarrer();
+echo $v2->stopper();
+echo $v2->accelerer(20);
+echo "La vitesse du véicule Peugeot 408 est de : ".$v1->get_vitesseActuelle()." km/h</br>";
+echo "La vitesse du véicule Citroën C4 est de : ".$v2->get_vitesseActuelle()." km/h</br>";
+
 echo $v1->info();
+echo $v2->info();
