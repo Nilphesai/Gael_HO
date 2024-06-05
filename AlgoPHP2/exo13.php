@@ -84,7 +84,7 @@ class Voiture
             $result = "Le véhicule $this->_marque $this->modèle accélère de $vitesse km / h</br>";
         }
         else {
-            $result = "le véhicule $this->_marque $this->modèle veux accélerer de $vitesse </br>";
+            $result = "le véhicule $this->_marque $this->modèle veux accélerer de $vitesse km / h</br>";
             $result .= "Pour accélerer, il faut démarrer le Véhicule $this->_marque $this->modèle !</br>";
         }
         return $result;
@@ -107,8 +107,8 @@ class Voiture
             $result = "Le véhicule $this->_marque $this->modèle ralentit de $vitesse km / h</br>";
         }
         else {
-            $result = "le véhicule $this->_marque $this->modèle veux ralentir de $vitesse </br>";
-            $result .= "Pour accélerer, il faut démarrer le Véhicule $this->_marque $this->modèle !</br>";
+            $result = "le véhicule $this->_marque $this->modèle veux ralentir de $vitesse km / h</br>";
+            $result .= "Pour ralentir, il faut démarrer le Véhicule $this->_marque $this->modèle !</br>";
         }
         return $result;
     }
@@ -129,6 +129,8 @@ echo $v1->accelerer(50);
 echo $v2->demarrer();
 echo $v2->stopper();
 echo $v2->accelerer(20);
+echo $v1->ralentir(10);
+echo $v2->ralentir(10);
 echo "La vitesse du véicule Peugeot 408 est de : ".$v1->get_vitesseActuelle()." km/h</br>";
 echo "La vitesse du véicule Citroën C4 est de : ".$v2->get_vitesseActuelle()." km/h</br>";
 
