@@ -116,7 +116,12 @@ class Voiture
 
     public function info(): string {
         
-        $result = "Info véhicule </br>********************</br>Nom et modèle du véhicule :$this->_marque $this->_modèle </br>Nombre de portes :$this->_nbPortes</br>Le véhicule $this->_marque est $this->_onOff </br>Sa vitesse actuelle est de : $this->_vitesseActuelle km / h</br>";
+        $result = "Info véhicule </br>
+        ********************</br>
+        Nom et modèle du véhicule :$this->_marque $this->_modèle </br>
+        Nombre de portes :$this->_nbPortes</br>
+        Le véhicule $this->_marque est $this->_onOff </br>
+        Sa vitesse actuelle est de : $this->_vitesseActuelle km / h</br>";
         return $result;
     }
 }
