@@ -12,6 +12,6 @@ class Titulaire{
         $this->_prenom = $prenom;
         $this->_dateNaissance = $dateNaissance;
         $this->_ville = $ville;
-        $this->_comptesBanquaires [];
+        $this->_comptesBanquaires = [];
     }
 }
